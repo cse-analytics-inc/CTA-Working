@@ -310,6 +310,7 @@ def mobileiotdatabase():
     return render_template('mobileIotDatabase.html')
 @app.route('/userSelect')
 def userSelect():
+    client = gspread.authorize(creds)
     for spreadsheet in client.openall():
         if spreadsheet.title != 'VulnData':
             message = Markup("<tr id='content'><td id='ipadd' name='" + spreadsheet.title + "' onclick='redir(this)'>" + spreadsheet.title + "</td></tr>")
